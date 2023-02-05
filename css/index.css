@@ -1,0 +1,245 @@
+*{margin: 0;padding: 0;}
+html,body{height: 100%;}
+body{
+	background-color: #091126;
+}
+/* 机器背景 */
+#bg{
+	position: fixed;
+	top:0 ;
+	left: 0;
+	background-image: url(../images/bg1.jpeg);
+	background-size: 100% 100%;
+	z-index: -2;
+}
+.box{
+	max-width: 390px;
+	overflow: auto;
+	margin: 0 auto;
+}
+.m1{
+	width: 100%;
+	height: 690px;
+	background-image: url(../images/m0.png);
+	background-size: 100% 100%;
+	margin-top: 10px;
+	/* opacity: 0.95; */
+}
+/* 系统显示窗口 */
+.system-window{
+	width: 265px;
+	height: 265px;
+	position: relative;
+	top: 185px;
+	left: 58px;
+	background-color: #091126;
+}
+.button-window{
+	width: 320px;
+	height: 80px;
+	position: relative;
+	top: 280px;
+	left: 33px;
+	transform: scaleY(1) perspective(.6em) rotateX(1.1deg);
+}
+
+/* 窗体图片素材 */
+.step{
+	background-size: 100% 100%;
+}
+.step-bg{
+	background-image: url(../images/fcs.jpg);
+	background-size: 100% 100%;
+}
+.step1{
+	background-image: url(../images/djz.png);
+}
+.step2{
+	background-image: url(../images/dld.png);
+}
+.step3{
+	background-image: url(../images/xlw.png);
+}
+.step4{
+	background-image: url(../images/dlw.png);
+}
+.step5{
+	background-image: url(../images/dpg.png);
+}
+.step6{
+	background-image: url(../images/xpg.png);
+}
+.step7{
+	background-image: url(../images/dlm.png);
+}
+.step8{
+	background-image: url(../images/dxg.png);
+}
+.step9{
+	background-image: url(../images/xxg.png);
+}
+.step10{
+	background-image: url(../images/boss.png);
+}
+.step11{
+	background-image: url(../images/dpg.png);
+}
+.step12{
+	background-image: url(../images/xjz.png);
+}
+.step13{
+	background-image: url(../images/djz.png);
+}
+.step14{
+	background-image: url(../images/dld.png);
+}
+.step15{
+	background-image: url(../images/x77.png);
+}
+.step16{
+	background-image: url(../images/d77.png);
+}
+.step17{
+	background-image: url(../images/dpg.png);
+}
+.step18{
+	background-image: url(../images/xlm.png);
+}
+.step19{
+	background-image: url(../images/dlm.png);
+}
+.step20{
+	background-image: url(../images/dxx.png);
+}
+.step21{
+	background-image: url(../images/xxx.png);
+}
+.step22{
+	background-image: url(../images/boss.png);
+}
+.step23{
+	background-image: url(../images/dpg.png);
+}
+.step24{
+	background-image: url(../images/xld.png);
+}
+
+/* 计分板 */
+.scoreboard{
+	width: 100px;
+	height: 30px;
+	background-color: #091126;
+	position: absolute;
+	left: 80.5px;
+	border: 2px solid #573b22;
+}
+.ul-number{
+	width: 100%;
+	height: 28px;
+	margin-top: 1px;
+}
+.ul-number>li{
+	width: 14.2857%;
+	height: 28px;
+	float: left;
+	list-style: none;
+}
+
+
+
+
+
+.step-ul{
+	width: 100%;
+	height: 40px;
+}
+.step-ul > li{
+	width: 11.1111%;
+	height: 40px;
+	list-style: none;
+	float: left;
+}
+.bt-ul{
+	width: 100%;
+	height: 40px;
+}
+.bt-ul > li{
+	width:11.1111%;
+	height: 40px;
+	list-style: none;
+	float: left;
+}
+/* 按钮部分 */
+.btn{
+	width: 30px;
+	height: 30px;
+	margin-top: 3px;
+	margin-left: 5px;
+	
+	border-radius: 50%;
+	background-size: 100% 100%;
+	 box-shadow: 0px 4px 0px rgba(0, 0, 0, .7), 0px 9px 15px rgba(94, 184, 12, 1);
+	 text-align: center;
+	 -webkit-transition: all .1s ease;
+	 -moz-transition: all .1s ease;
+	 transition: all .1s ease;
+}
+.btn:active{
+	 box-shadow: 0px 3px 0px rgba(0, 0, 0, .9), 0px 3px 6px rgba(94, 184, 12, 1);
+	 position: relative;
+	 top: 2px
+}
+
+.btn1{
+	background-image: url(../images/bt_boss.png);
+}
+.btn2{
+	background-image: url(../images/bt_77.png);
+}
+.btn3{
+	background-image: url(../images/bt_xx.png);
+}
+.btn4{
+	background-image: url(../images/bt_xg.png);
+}
+.btn5{
+	background-image: url(../images/bt_ld.png);
+}
+.btn6{
+	background-image: url(../images/bt_lm.png);
+}
+.btn7{
+	background-image: url(../images/bt_jz.png);
+}
+.btn8{
+	background-image: url(../images/bt_pg.png);
+}
+.btn9{
+	background-image: url(../images/bt_ks.png);
+}
+
+.add-num,.settlement{
+	height: 15px;
+	width: 96%;
+	margin-left: 2%;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 5px;
+	line-height: 18px;
+	background-size: 100% 100%;
+	border: 1px solid #031c50;
+	 text-align: center;
+	 -webkit-transition: all .1s ease;
+	 -moz-transition: all .1s ease;
+	 transition: all .1s ease;
+	 margin-top: 2px;
+}
+.add-num{
+	background-image: url(../images/bt-sf.jpg);
+}
+.settlement{
+	background-image: url(../images/bt-js.jpg);
+}
+.add-num:active,.settlement:active{
+	border: 1px solid #05b426;
+}
