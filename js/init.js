@@ -25,11 +25,6 @@ function gameInit(){
 		$(".m1").css("margin-top",mTop+"px");
 	}
 	
-	
-	
-	//初始化给所有灯管赋0
-	
-	
 }
 
 gameInit();

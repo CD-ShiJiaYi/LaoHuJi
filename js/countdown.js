@@ -80,11 +80,15 @@ var setNumber = function(digit, number, on) {
 
 	if (isNaN(current) || current != number) {
 		setTimeout(function() {
-			digitSegments[number].forEach(function(digitSegment, index) {
-				setTimeout(function() {
-					segments[digitSegment - 1].classList.add('on');
-				}, index * 45)
-			});
+			try{
+				digitSegments[number].forEach(function(digitSegment, index) {
+					setTimeout(function() {
+						segments[digitSegment - 1].classList.add('on');
+					}, index * 45)
+				});
+			}catch(e){
+				//手动打印异常
+			}
 		}, 250);
 		digit.setAttribute('data-value', number);
 	}
