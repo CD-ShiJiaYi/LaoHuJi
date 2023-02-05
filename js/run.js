@@ -4,40 +4,105 @@
 //locomotive 车头
 //carriage 车身
 var gameInterval;
+//音频
+let audio1 = document.getElementById("audio1");
+let audio2 = document.getElementById("audio2");
+var n = 1;
+//圈
+var number = 1;
+//中奖号
+var winningNumbers = 0;
+var loHtml = "<div class=\"locomotive\"></div>";
+var caHtml = "<div class=\"carriage\"></div>";
+var isRun = false;
+
 function gameStart(){
-	var n = 1;
-	//圈
-	var number = 1;
-	gameInterval = setInterval(()=>{
-		if(n > 24){
-			n = 1;
-			number++;//圈速的增加
-		}
-		if(n<4 && number > 1){
-			if(n == 3){
-				runStep(n,n-1,n-2,24);
-			}else if(n == 2){
-				runStep(n,n-1,24,23);
-			}else if(n == 1){
-				runStep(n,24,23,22);
-			}
-		}else{
-			runStep(n,n-1,n-2,n-3);
-		}
-		n++;
-	},100);
+	if(!isRun){
+		isRun = true;
+		//随机一个中奖号码
+		winningNumbers = generate_rand_num(1,23);
+		number=0;
+		n=0;
+		gameInterval = setInterval("startRun()",100);
+		audio1.play();
+	}
+}
+
+function startRun(){
+	if(n > 24){
+		n = 1;
+		number++;//圈速的增加
+	}
+	runStep();
+	n++;
+	//渐近加速效果
+	if(n>=5 && number == 0){
+		clearInterval(gameInterval);
+		gameInterval = setInterval("startRun()",80);
+	}
+	if(n>=15 && number == 0){
+		clearInterval(gameInterval);
+		gameInterval = setInterval("startRun()",50);
+	}
+	if(n>=20 && number == 0){
+		clearInterval(gameInterval);
+		gameInterval = setInterval("startRun()",20);
+	}
+	//中奖操作
+	if(number > 11 && winningNumbers == n){
+		stopStep();
+	}
 }
 
 //1个车头 4个车箱
-function runStep(a,b,c,d){
+function runStep(){
+	var a,b,c,d;
+	if(n<4 && number > 1){
+		if(n == 3){
+			a = n;
+			b = n-1;
+			c = n-2;
+			d = 24;
+		}else if(n == 2){
+			a = n;
+			b = n-1;
+			c = 24;
+			d = 23;
+		}else if(n == 1){
+			a = n;
+			b = 24;
+			c = 23;
+			d = 22;
+		}
+	}else{
+		a = n;
+		b = n-1;
+		c = n-2;
+		d = n-3;
+	}
+	
 	//清屏
 	$(".step").html("");
-	var loHtml = "<div class=\"locomotive\"></div>";
-	var caHtml = "<div class=\"carriage\"></div>";
 	$(".step"+a).html(loHtml);
 	$(".step"+b).html(caHtml);
 	$(".step"+c).html(caHtml);
 	$(".step"+d).html(caHtml);
+}
+//停止运行
+function stopStep(){
+	audio1.load();
+	audio2.play();
+	clearInterval(gameInterval);
+	$(".step").html("");
+	$(".step"+n).html(loHtml);
+	isRun = false;
+}
+
+//生成min_v到max_v之间的随机数
+function generate_rand_num(min_v, max_v) {
+    //min_v下限，max_v上限
+    var rand_num = parseInt(Math.random() * (max_v - min_v + 1) + min_v);
+    return rand_num
 }
 
 

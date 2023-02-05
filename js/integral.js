@@ -15,19 +15,24 @@ $(document).ready(function() {
 	chageNum(userIntegral);
 	
 	$(".btn").on("click",function(){
-		//添加本轮积分
-		thisRoundIn++;
-		if(userIntegral >= thisRoundIn){
-			var code = $(this).attr("code");
-			//给显示灯管添加数字
-			var num = thisRound[code];
-			if(num == undefined){
-				thisRound[code] = 1;
-			}else{
-				thisRound[code] = thisRound[code] + 1;
+		if(!isRun){
+			//添加本轮积分
+			thisRoundIn++;
+			if(userIntegral >= 1){
+				//屏幕减分
+				var a = userIntegral-=1;
+				chageNum(a);
+				var code = $(this).attr("code");
+				//给显示灯管添加数字
+				var num = thisRound[code];
+				if(num == undefined){
+					thisRound[code] = 1;
+				}else{
+					thisRound[code] = thisRound[code] + 1;
+				}
+				//给显示灯管赋值
+				showIntegral(thisRound[code],code);
 			}
-			//给显示灯管赋值
-			showIntegral(thisRound[code],code);
 		}
 	});
 	
@@ -54,3 +59,17 @@ $(document).ready(function() {
 		gameStart();
 	});
 });
+
+
+//定时刷新，不然会出现屏显问题
+setInterval(()=>{
+	chageNum(userIntegral);
+	for(var j = 0; j<thisRound.length; j++){
+		if(thisRound[j] == undefined){
+			showIntegral(0,j);
+		}else{
+			showIntegral(thisRound[j],j);
+		}
+	}
+	console.log("刷新数据");
+},5000);

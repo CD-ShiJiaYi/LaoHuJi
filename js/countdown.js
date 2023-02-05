@@ -89,7 +89,7 @@ var setNumber = function(digit, number, on) {
 			}catch(e){
 				//手动打印异常
 			}
-		}, 250);
+		}, 100);
 		digit.setAttribute('data-value', number);
 	}
 }
