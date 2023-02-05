@@ -313,15 +313,15 @@
 						</li>
 					</ul>
 					<ul class="bt-ul">
-						<li><div class="btn btn1"></div></li>
-						<li><div class="btn btn2"></div></li>
-						<li><div class="btn btn3"></div></li>
-						<li><div class="btn btn4"></div></li>
-						<li><div class="btn btn5"></div></li>
-						<li><div class="btn btn6"></div></li>
-						<li><div class="btn btn7"></div></li>
-						<li><div class="btn btn8"></div></li>
-						<li><div class="btn btn9"></div></li>
+						<li><div class="btn btn1" code="1"></div></li>
+						<li><div class="btn btn2" code="2"></div></li>
+						<li><div class="btn btn3" code="3"></div></li>
+						<li><div class="btn btn4" code="4"></div></li>
+						<li><div class="btn btn5" code="5"></div></li>
+						<li><div class="btn btn6" code="6"></div></li>
+						<li><div class="btn btn7" code="7"></div></li>
+						<li><div class="btn btn8" code="8"></div></li>
+						<li><div class="btn btn9" code="9"></div></li>
 					</ul>
 				</div>
 			</div>
@@ -330,9 +330,14 @@
 	<script src="js/jquery-3.6.3.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/init.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/countdown.js" type="text/javascript"></script>
+	<script src="js/integral.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			chageNum(400);
+			var i = 400;
+			setInterval(()=>{
+				i++;
+				chageNum(i);
+			},1000);
 		});
 	</script>
 	</body>

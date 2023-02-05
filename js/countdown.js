@@ -41,9 +41,21 @@ function chageNum(num){
 		},1);
 	} */
 }
-
+//总积分
 function showNum(num){
 	var _digit = document.querySelectorAll('.digit');
+	//切割数据
+	var arr = num.toString().split('');
+	var j = arr.length-1;
+	for(var i=_digit.length;i>0;i--){
+		var obj = _digit[i-1];
+		setNumber(obj, Math.floor(arr[j]), 1);
+		j--;
+	}
+}
+//下注积分
+function showIntegral(num,code){
+	var _digit = document.querySelectorAll('.digit'+code);
 	//切割数据
 	var arr = num.toString().split('');
 	var j = arr.length-1;

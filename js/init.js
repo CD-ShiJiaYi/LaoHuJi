@@ -24,6 +24,12 @@ function gameInit(){
 		var mTop = (winHeight - 690)/2;
 		$(".m1").css("margin-top",mTop+"px");
 	}
+	
+	
+	
+	//初始化给所有灯管赋0
+	
+	
 }
 
 gameInit();
