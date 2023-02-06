@@ -152,6 +152,5 @@ setInterval(()=>{
 			//cookies信息的有效时常（7天）。
 			expires: 7
 		});
-		console.log("自动保存积分");
 	}
 },3000);

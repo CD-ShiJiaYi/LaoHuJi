@@ -30,7 +30,6 @@ function gameInit(){
 		if(isNaN(nb)){
 			nb = 0;
 		}
-		console.log(nb);
 		userIntegral = parseInt(nb);
 		chageNum(userIntegral);
 	}
