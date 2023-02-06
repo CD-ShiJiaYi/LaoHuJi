@@ -10,6 +10,12 @@ let audio2 = document.getElementById("audio2");
 let audio3 = document.getElementById("audio3");
 let audio4 = document.getElementById("audio4");
 let audio5 = document.getElementById("audio5");
+//循环播放
+audio5.onended = function () {
+    audio5.load();
+    audio5.play();
+}
+
 
 var n = 1;
 //圈
@@ -29,6 +35,9 @@ function gameStart(){
 		isRun = true;
 		//随机一个中奖号码
 		winningNumbers = generate_rand_num(1,24);
+		//判断是否会亏钱
+		winningNumbers = winningVerification(winningNumbers);
+		
 		number=0;
 		n=0;
 		gameInterval = setInterval("startRun()",100);
@@ -137,9 +146,12 @@ function settlement(){
 		xz = (xz*obj.bei);
 		userIntegral += xz;
 		chageNum(userIntegral);
-		setTimeout(()=>{
+		/* setTimeout(()=>{
 			layer.msg(od+" * "+obj.bei+" = "+(od*obj.bei));
-		},1000);
+		},1000); */
+		jieshuan(thisRoundIn,xz);
+	}else{
+		jieshuan(thisRoundIn,0);
 	}
 	//对应的开始闪烁2秒(待开发)
 	setTimeout(()=>{

@@ -1,12 +1,13 @@
 /* 计算下注得分 */
 //有8个下注选项
 var thisRound = new Array(8);
+var czNum = 0;
 //倍数
 var multiple = [
 	{'bei':10,"xz":6},
 	{'bei':10,"xz":4},
-	{'bei':50,"xz":1},
-	{'bei':100,"xz":1},
+	{'bei':50,"xz":0},
+	{'bei':100,"xz":0},
 	{'bei':5,"xz":7},
 	{'bei':2,"xz":7},
 	{'bei':10,"xz":5},
@@ -91,19 +92,56 @@ $(document).ready(function() {
 					//修改用户的积分
 					userIntegral += 50;
 					chageNum(userIntegral);
-					if(audio5.isPlay){
-						
-					}
+					if(audio5.isPlay){}
 				  }
 				});
 			}
 		}
 	})
 	
+	//绑定盈亏事件
+	$(".settlement").on("click",function(){
+		if(!isRun){
+			var userMoney = $.cookie("userMoney");
+			layer.msg('已赚取：'+(userMoney)+'分', {
+			   time: 0 //不自动关闭
+			  ,title:'水果机系统提示'
+			  ,btn: ['确定', '关闭']
+			  ,yes: function(index){
+			    layer.close(index);
+			  }
+			});
+		}else{
+			layer.msg("本局结束后再看吧");
+		}
+	});
+	
 	//绑定上开始事件
 	$(".btn9").on("click",function(){
 		gameStart();
 	});
+	
+	//绑定重置事件
+	$(".clear").on("click",function(){
+		czNum++;
+		if(czNum >= 8){
+			czNum = 0;
+			$.cookie("userMoney", 0, {
+				expires: 1
+			});
+			$.cookie("userIntegral", 0, {
+				//cookies信息的有效时常（7天）。
+				expires: 7
+			});
+			userIntegral = 0;
+			chageNum(userIntegral);
+			layer.msg("重置成功！");
+		}
+	});
+	setInterval(()=>{
+		czNum = 0;
+	},2000);
+	
 });
 
 

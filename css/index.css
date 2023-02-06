@@ -269,3 +269,13 @@ body{
 	z-index: 999999;
 	opacity:0.5;
 }
+
+.clear{
+	width: 30px;
+	height: 30px;
+	position: relative;
+	z-index: 9999;
+	left: 190px;
+	top: 158px;
+	border-radius: 50%;
+}

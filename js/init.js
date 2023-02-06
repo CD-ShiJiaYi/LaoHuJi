@@ -34,6 +34,14 @@ function gameInit(){
 		userIntegral = parseInt(nb);
 		chageNum(userIntegral);
 	}
+	
+	//错误修复
+	var userMoney = $.cookie("userMoney");
+	if(userMoney == undefined || userMoney == null){
+		$.cookie("userMoney", 0, {
+			expires: 1
+		});
+	}
 }
 
 gameInit();

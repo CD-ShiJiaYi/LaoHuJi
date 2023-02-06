@@ -10,11 +10,10 @@ var appleLocal = [5,11,17,23];
 var appleQuan = 0;
 
 function dasixi(){
-	 dsxInterval = setInterval("startDashixi()",200);
+	 dsxInterval = setInterval("startDashixi()",150);
 }
 
 function startDashixi(){
-	console.log(appleStep4);
 	appleStep4[appleStep] = appleStep4[appleStep] + 1;
 	var a = winningNumbers + appleStep4[appleStep];
 	if(a > 24){
@@ -69,6 +68,13 @@ function stopDashixi(){
 	appleStep4 = [0,0,0,0];
 	appleQuan = 0;
 	
+	var xz = thisRound[8];
+	if(xz != undefined && xz != -1){
+		xz = (xz*20);
+		jieshuan(thisRoundIn,xz);
+	}else{
+		jieshuan(thisRoundIn,0);
+	}
 	setTimeout(()=>{
 		//清除下注
 		thisRound = new Array(8);
