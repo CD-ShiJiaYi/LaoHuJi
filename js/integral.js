@@ -91,6 +91,9 @@ $(document).ready(function() {
 					//修改用户的积分
 					userIntegral += 50;
 					chageNum(userIntegral);
+					if(audio5.isPlay){
+						
+					}
 				  }
 				});
 			}

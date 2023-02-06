@@ -7,6 +7,10 @@ var gameInterval;
 //音频
 let audio1 = document.getElementById("audio1");
 let audio2 = document.getElementById("audio2");
+let audio3 = document.getElementById("audio3");
+let audio4 = document.getElementById("audio4");
+let audio5 = document.getElementById("audio5");
+
 var n = 1;
 //圈
 var number = 1;
@@ -29,6 +33,7 @@ function gameStart(){
 		n=0;
 		gameInterval = setInterval("startRun()",100);
 		audio1.play();
+		audio5.pause();
 	}else{
 		layer.msg("请等待本局结束");
 	}
@@ -56,6 +61,19 @@ function startRun(){
 	//中奖操作
 	if(number > 11 && winningNumbers == n){
 		stopStep();
+		if(winningNumbers == 10 || winningNumbers == 22){
+			setTimeout(()=>{
+				audio2.load();
+				audio3.play();
+				audio4.play();
+			},1000);
+			//走大四喜方法
+			setTimeout(()=>{
+				dasixi();
+			},2000);
+		}else{
+			settlement();
+		}
 	}
 	n++;
 }
@@ -86,7 +104,6 @@ function runStep(){
 		c = n-2;
 		d = n-3;
 	}
-	
 	//清屏
 	$(".step").html("");
 	$(".step"+a).html(loHtml);
@@ -101,7 +118,6 @@ function stopStep(){
 	clearInterval(gameInterval);
 	$(".step").html("");
 	$(".step"+n).html(loHtml);
-	settlement();
 }
 
 //生成min_v到max_v之间的随机数
@@ -111,7 +127,7 @@ function generate_rand_num(min_v, max_v) {
     return rand_num
 }
 
-//结算方法
+//普通结算方法
 function settlement(){
 	var obj = multiple[(winningNumbers-1)];
 	//下注的量
@@ -134,6 +150,7 @@ function settlement(){
 		}
 		thisRoundIn=0;
 		isRun = false;
+		audio5.play();
 	},2000);
 }
 
