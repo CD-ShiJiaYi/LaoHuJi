@@ -17,14 +17,20 @@ var caHtml = "<div class=\"carriage\"></div>";
 var isRun = false;
 
 function gameStart(){
+	if(thisRoundIn == 0){
+		layer.msg("请先下注");
+		return;
+	}
 	if(!isRun){
 		isRun = true;
 		//随机一个中奖号码
-		winningNumbers = generate_rand_num(1,23);
+		winningNumbers = generate_rand_num(1,24);
 		number=0;
 		n=0;
 		gameInterval = setInterval("startRun()",100);
 		audio1.play();
+	}else{
+		layer.msg("请等待本局结束");
 	}
 }
 
@@ -34,7 +40,6 @@ function startRun(){
 		number++;//圈速的增加
 	}
 	runStep();
-	n++;
 	//渐近加速效果
 	if(n>=5 && number == 0){
 		clearInterval(gameInterval);
@@ -52,6 +57,7 @@ function startRun(){
 	if(number > 11 && winningNumbers == n){
 		stopStep();
 	}
+	n++;
 }
 
 //1个车头 4个车箱
@@ -95,7 +101,7 @@ function stopStep(){
 	clearInterval(gameInterval);
 	$(".step").html("");
 	$(".step"+n).html(loHtml);
-	isRun = false;
+	settlement();
 }
 
 //生成min_v到max_v之间的随机数
@@ -105,4 +111,29 @@ function generate_rand_num(min_v, max_v) {
     return rand_num
 }
 
+//结算方法
+function settlement(){
+	var obj = multiple[(winningNumbers-1)];
+	//下注的量
+	var xz = thisRound[obj.xz+1];
+	if(xz != undefined && xz != -1){
+		var od = xz;
+		xz = (xz*obj.bei);
+		userIntegral += xz;
+		chageNum(userIntegral);
+		setTimeout(()=>{
+			layer.msg(od+" * "+obj.bei+" = "+(od*obj.bei));
+		},1000);
+	}
+	//对应的开始闪烁2秒(待开发)
+	setTimeout(()=>{
+		//清除下注
+		thisRound = new Array(8);
+		for(var j = 1; j<9; j++){
+			showIntegral(0,j);
+		}
+		thisRoundIn=0;
+		isRun = false;
+	},2000);
+}
 

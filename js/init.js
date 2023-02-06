@@ -24,7 +24,16 @@ function gameInit(){
 		var mTop = (winHeight - 690)/2;
 		$(".m1").css("margin-top",mTop+"px");
 	}
-	
+	//获取cookie中的积分
+	var nb = $.cookie("userIntegral");
+	if(nb != undefined && nb != null){
+		if(isNaN(nb)){
+			nb = 0;
+		}
+		console.log(nb);
+		userIntegral = parseInt(nb);
+		chageNum(userIntegral);
+	}
 }
 
 gameInit();

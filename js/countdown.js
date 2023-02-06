@@ -74,7 +74,7 @@ var setNumber = function(digit, number, on) {
 		digitSegments[current].forEach(function(digitSegment, index) {
 			setTimeout(function() {
 				segments[digitSegment - 1].classList.remove('on');
-			}, index * 45)
+			}, index * 15)
 		});
 	}
 
@@ -84,12 +84,12 @@ var setNumber = function(digit, number, on) {
 				digitSegments[number].forEach(function(digitSegment, index) {
 					setTimeout(function() {
 						segments[digitSegment - 1].classList.add('on');
-					}, index * 45)
+					}, index * 15)
 				});
 			}catch(e){
 				//手动打印异常
 			}
-		}, 100);
+		}, 80);
 		digit.setAttribute('data-value', number);
 	}
 }
